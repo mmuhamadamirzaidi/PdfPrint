@@ -3,6 +3,7 @@ package com.mmuhamadamirzaidi.pdfprint;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.print.PrintAttributes;
@@ -37,6 +38,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import dmax.dialog.SpotsDialog;
+
 public class MainActivity extends AppCompatActivity {
 
     Button button_generate_pdf;
@@ -56,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         button_generate_pdf.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                createPDFFile(Common.getAppPath(MainActivity.this)+"pdf_name.pdf");
+                                createPDFFile(Common.getAppPath(MainActivity.this) + "pdf_name.pdf");
                             }
                         });
                     }
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     private void createPDFFile(String path) {
         if (new File(path).exists())
             new File(path).delete();
-        try{
+        try {
             Document document = new Document();
 
             //Save PDF
@@ -92,8 +95,7 @@ public class MainActivity extends AppCompatActivity {
             document.addCreator("Black Developer");
             document.addAuthor("Muhamad Amir Bin Zaidi");
 
-            //Font & color (CMYK)
-            BaseColor baseColor = new BaseColor(0, 69, 69, 5);
+            //Font size
             float headerItemFontSize = 13.0f;
             float valueItemFontSize = 15.0f;
 
@@ -131,8 +133,8 @@ public class MainActivity extends AppCompatActivity {
             addItemLeftRight(document, "Parking Date:", "Parking Time:", headerItem, headerItem);
             addItemLeftRight(document, "08 October 2019", "11:20:41 PM - 02:20:41 PM", valueItem, valueItem);
 
-            addItem(document,"Parking Place:", Element.ALIGN_LEFT, headerItem);
-            addItem(document,"Jalan Mati, Tak Jumpa-Jumpa, 00000 Sampai Ke, Sudah.", Element.ALIGN_LEFT, valueItem);
+            addItem(document, "Parking Place:", Element.ALIGN_LEFT, headerItem);
+            addItem(document, "Jalan Mati, Tak Jumpa-Jumpa, 00000 Sampai Ke, Sudah.", Element.ALIGN_LEFT, valueItem);
 
             addLineSeparator(document);
 
@@ -167,13 +169,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void printPdf() {
-        PrintManager printManager = (PrintManager)getSystemService(Context.PRINT_SERVICE);
+        PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
         try {
-            PrintDocumentAdapter printDocumentAdapter = new PdfDocumentAdapter(MainActivity.this, Common.getAppPath(MainActivity.this)+"pdf_name.pdf");
+            PrintDocumentAdapter printDocumentAdapter = new PdfDocumentAdapter(MainActivity.this, Common.getAppPath(MainActivity.this) + "pdf_name.pdf");
             printManager.print("Document", printDocumentAdapter, new PrintAttributes.Builder().build());
-        }
-        catch (Exception exception) {
-            Log.e("MMUHAMADAMIRZAIDI", ""+exception.getMessage());
+        } catch (Exception exception) {
+            Log.e("MMUHAMADAMIRZAIDI", "" + exception.getMessage());
         }
     }
 
