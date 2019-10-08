@@ -94,31 +94,33 @@ public class MainActivity extends AppCompatActivity {
 
             //Font & color (CMYK)
             BaseColor baseColor = new BaseColor(0, 69, 69, 5);
-            float fontSize = 20.0f;
-            float valueFontSize = 26.0f;
+            float headerItemFontSize = 13.0f;
+            float valueItemFontSize = 15.0f;
 
             BaseFont baseFont = BaseFont.createFont("assets/fonts/mr.ttf", "UTF-8", BaseFont.EMBEDDED);
 
             //Create header of document
-            Font headerFont = new Font(baseFont, 36.0f, Font.BOLD, BaseColor.DARK_GRAY);
+            Font headerFont = new Font(baseFont, 20.0f, Font.BOLD, BaseColor.DARK_GRAY);
+
+            //Create footer of document
+            Font footerFont = new Font(baseFont, 18.0f, Font.BOLD, BaseColor.GRAY);
 
             addItem(document, "Parking Receipt", Element.ALIGN_CENTER, headerFont);
 
             //Add order id
-            Font idFont = new Font(baseFont, fontSize, Font.BOLD, BaseColor.DARK_GRAY);
+            Font headerItem = new Font(baseFont, headerItemFontSize, Font.NORMAL, BaseColor.GRAY);
+            Font valueItem = new Font(baseFont, valueItemFontSize, Font.BOLD, BaseColor.GRAY);
 
-            addItem(document,"Receipt Id:", Element.ALIGN_LEFT, idFont);
-
-            Font idFontValue = new Font(baseFont, valueFontSize, Font.NORMAL, baseColor);
-            addItem(document,"#123456789", Element.ALIGN_LEFT, idFont);
+            addItemLeftRight(document, "Receipt Id:", "Company Name:", headerItem, headerItem);
+            addItemLeftRight(document, "#123456789", "Black Developer Sdn. Bhd", valueItem, valueItem);
 
             addLineSeparator(document);
 
             //Create account details
             addItem(document, "Account Details", Element.ALIGN_CENTER, headerFont);
 
-            addItemLeftRight(document, "Name:", "Vehicle Plat:", idFont, idFont);
-            addItemLeftRight(document, "Muhamad Amir Bin Zaidi", "AMR14", idFont, idFont);
+            addItemLeftRight(document, "Name:", "Vehicle Plat:", headerItem, headerItem);
+            addItemLeftRight(document, "Muhamad Amir Bin Zaidi", "AMR14", valueItem, valueItem);
 
             addLineSeparator(document);
 
@@ -126,31 +128,28 @@ public class MainActivity extends AppCompatActivity {
             addItem(document, "Parking Details", Element.ALIGN_CENTER, headerFont);
 
             //Add parking date
-            addItem(document,"Parking Date:", Element.ALIGN_LEFT, idFont);
-            addItem(document,"08 October 2019", Element.ALIGN_LEFT, idFont);
+            addItemLeftRight(document, "Parking Date:", "Parking Time:", headerItem, headerItem);
+            addItemLeftRight(document, "08 October 2019", "11:20:41 PM - 02:20:41 PM", valueItem, valueItem);
 
-            addItem(document,"Parking Time:", Element.ALIGN_LEFT, idFont);
-            addItem(document,"11:20:41 PM - 02:20:41 PM", Element.ALIGN_LEFT, idFont);
-
-            addItem(document,"Parking Place:", Element.ALIGN_LEFT, idFont);
-            addItem(document,"Jalan Mati, Tak Jumpa-Jumpa, 00000 Sampai Ke, Sudah.", Element.ALIGN_LEFT, idFont);
+            addItem(document,"Parking Place:", Element.ALIGN_LEFT, headerItem);
+            addItem(document,"Jalan Mati, Tak Jumpa-Jumpa, 00000 Sampai Ke, Sudah.", Element.ALIGN_LEFT, valueItem);
 
             addLineSeparator(document);
 
             addItem(document, "Total", Element.ALIGN_CENTER, headerFont);
 
-            addItemLeftRight(document, "Hour:", "Rate:", idFont, idFont);
-            addItemLeftRight(document, "Peak Hour", "RM5.00/Hour", idFont, idFont);
+            addItemLeftRight(document, "Hour:", "Rate:", headerItem, headerItem);
+            addItemLeftRight(document, "Peak Hour", "RM5.00/Hour", valueItem, valueItem);
 
-            addItemLeftRight(document, "Duration:", "Rate:", idFont, idFont);
-            addItemLeftRight(document, "3 Hours", "RM5.00/Hour", idFont, idFont);
+            addItemLeftRight(document, "Duration:", "Rate:", headerItem, headerItem);
+            addItemLeftRight(document, "3 Hours", "RM5.00/Hour", valueItem, valueItem);
 
-            addItemLeftRight(document, "Total Price:", "Payment Status:", idFont, idFont);
-            addItemLeftRight(document, "RM15.00", "Paid", idFont, idFont);
+            addItemLeftRight(document, "Total Price:", "Payment Status:", headerItem, headerItem);
+            addItemLeftRight(document, "RM15.00", "Paid", valueItem, valueItem);
 
             addLineSeparator(document);
 
-            addItem(document, "THANK YOU AND DRIVE SAFELY!", Element.ALIGN_CENTER, headerFont);
+            addItem(document, "THANK YOU AND DRIVE SAFELY!", Element.ALIGN_CENTER, footerFont);
 
             document.close();
 
@@ -192,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         lineSeparator.setLineColor(new BaseColor(0, 0, 0, 68));
         addLineSpace(document);
         document.add(new Chunk(lineSeparator));
-        addLineSeparator(document);
+        addLineSpace(document);
     }
 
     private void addLineSpace(Document document) throws DocumentException {

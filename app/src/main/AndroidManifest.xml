@@ -22,8 +22,7 @@
         <provider
             android:authorities="com.mmuhamadamirzaidi.pdfprint.fileprovider"
             android:exported="false"
-            android:grantUriPermission="true"
-            android:enabled="true"
+            android:grantUriPermissions="true"
             android:name="androidx.core.content.FileProvider">
 
             <meta-data
