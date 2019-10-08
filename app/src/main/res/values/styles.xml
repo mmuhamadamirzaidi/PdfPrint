@@ -8,11 +8,4 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="Generating" parent="android:Theme.DeviceDefault.Dialog">
-        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
-        <item name="DialogTitleText">Generating</item>
-        <item name="DialogSpotColor">@color/white</item>
-        <item name="DialogSpotCount">5</item>
-    </style>
-
 </resources>

@@ -3,7 +3,6 @@ package com.mmuhamadamirzaidi.pdfprint;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.print.PrintAttributes;
@@ -37,8 +36,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import dmax.dialog.SpotsDialog;
 
 public class MainActivity extends AppCompatActivity {
 
