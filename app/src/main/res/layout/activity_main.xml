@@ -1,18 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <LinearLayout
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:fontFamily="@font/mm"
+            android:textColor="@color/textColorPrimary"
+            android:text="PDF Generator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/mr"
+            android:textColor="@color/textColorAccent"
+            android:text="Easily generate PDF file and you’ll be able to save it as PDF and print in seconds."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_marginBottom="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/logosecondarywhite" />
+
+        <Button
+            android:id="@+id/button_generate_pdf"
+            android:text="Generate PDF File"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mm"
+            android:textColor="@color/white"
+            android:background="@drawable/bgbtncreate" />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
